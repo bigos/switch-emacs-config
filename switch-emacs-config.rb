@@ -24,19 +24,21 @@ def print_folder_options(config_folders)
 end
 
 def apply_option(config_folders)
+  default_config_folder = File.join(Dir.home, EMACSD)
   begin
     opt = Integer(input('Option'))
     raise ArgumentError unless config_folders[opt]
 
-    File.delete(File.join(Dir.home, EMACSD))
+    File.delete(default_config_folder)
     File.symlink(File.join(Dir.home, config_folders[opt]),
-                 File.join(Dir.home, EMACSD))
+                 default_config_folder)
   rescue ArgumentError
     puts 'Invalid option entered'
   end
 end
 
-def check_if_proceed(default_config_folder, config_folders)
+def check_if_proceed(config_folders)
+  default_config_folder = File.join(Dir.home, EMACSD)
   if File.exist? default_config_folder
     if File.symlink?(default_config_folder)
       puts 'this action will overwrite the existing symlink'
@@ -68,10 +70,8 @@ def check_if_proceed(default_config_folder, config_folders)
 end
 
 def main
-  default_config_folder = File.join(Dir.home, EMACSD)
   config_folders = emacs_folder_entries
-
-  proceed = check_if_proceed(default_config_folder, config_folders)
+  proceed = check_if_proceed(config_folders)
   return false unless proceed
 
   print_folder_options(config_folders)
