@@ -17,7 +17,7 @@ def input(prompt)
 end
 
 def print_folder_options(config_folders)
-  puts 'Select emacs config'
+  puts 'Select emacs config number'
   config_folders.each_index do |ci|
     puts "#{ci} #{config_folders[ci]}"
   end
@@ -29,7 +29,7 @@ def apply_option(config_folders)
     opt = Integer(input('Option'))
     raise ArgumentError unless config_folders[opt]
 
-    File.delete(default_config_folder)
+    File.delete(default_config_folder) if File.exist?(default_config_folder)
     File.symlink(File.join(Dir.home, config_folders[opt]),
                  default_config_folder)
   rescue ArgumentError
