@@ -14,6 +14,7 @@ http://ergoemacs.org/misc/list_of_emacs_starter_kits.html
 
     $ switch-emacs-config.rb
 
+```
 this action will overwrite the existing symlink
 pointing to /home/jacek/.emacs.d-emacs-starter-kit
 
@@ -22,5 +23,6 @@ Select emacs config
 1 .emacs.d-prelude
 2 .emacs.d-purcell
 Option> 1
+```
 
 This selects option 1 and adjusts the symlink.
