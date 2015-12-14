@@ -16,7 +16,7 @@ http://ergoemacs.org/misc/list_of_emacs_starter_kits.html
 
 ```
 this action will overwrite the existing symlink
-pointing to /home/jacek/.emacs.d-emacs-starter-kit
+pointing to /home/your-username/.emacs.d-emacs-starter-kit
 
 Select emacs config
 0 .emacs.d-emacs-starter-kit
